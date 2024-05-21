@@ -1,0 +1,40 @@
+---
+openapi: 3.0.3
+info:
+  title: Backend API
+  version: "1.0"
+paths:
+  /user:
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/user'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/userToken'
+components:
+  schemas:
+    user:
+      type: object
+      properties:
+        username:
+          description: email address
+          type: string
+          example: john.doe@example.com
+        userPassword:
+          type: string
+          description: password
+          example: password
+    userToken:
+      type: object
+      properties:
+        UserId:
+          type: string
+          example: "john.doe@example.com"
